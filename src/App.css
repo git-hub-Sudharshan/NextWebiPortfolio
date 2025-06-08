@@ -1,42 +1,584 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+
+
+@keyframes bg-pan {
+  0% {
+    background-position: 100% 0%;
+  }
+  25% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  75% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 0%;
+  }
+}
+.animate-bg-pan {
+  animation: bg-pan 4s linear infinite;
+}
+
+/* Add to your index.css or global stylesheet */
+.wave-motion {
+  animation: waveMove 6s linear infinite alternate;
+}
+
+
+/* Add to your index.css or global stylesheet */
+.wave-gradient-motion {
+  animation: waveGradientMove 8s ease-in-out infinite alternate;
+  will-change: transform;
+}
+@keyframes waveGradientMove {
+  0% {
+    transform: translateX(0) scaleY(1);
+  }
+  50% {
+    transform: translateX(-40px) scaleY(1.03);
+  }
+  100% {
+    transform: translateX(0) scaleY(1);
+  }
+}
+
+/* Responsive font sizes for xs screens */
+@media (max-width: 400px) {
+  .xs\:text-\[2\.5rem\] {
+    font-size: 2.5rem !important;
+  }
+}
+
+/* Or your global CSS file */
+
+/* Example for a slower background pan animation */
+@media (max-width: 1309px) {
+  .animate-bg-pan {
+    animation-duration: 16s !important; /* Slower speed */
+    animation-name: bg-pan-reduced !important; /* Use reduced movement keyframes */
+  }
+}
+
+@keyframes bg-pan-reduced {
+  0% {
+    background-position: 60% 0%;
+  }
+  50% {
+    background-position: 40% 20%;
+  }
+  100% {
+    background-position: 60% 0%;
+  }
+}
+
+/* Contact button wave animation - square shape */
+.wave {
+  width: 48px;
+  height: 48px;
+  background-color: #444857;
+  box-shadow: inset 0 0 24px rgba(0, 0, 0, 0.4);
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: none;
+  border-radius: 8px; /* Square with slightly rounded corners */
+  transition: 0.3s;
+  overflow: hidden;
+  z-index: 0;
+}
+.wave::before,
+.wave::after {
+  width: 200%;
+  height: 200%;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -75%);
+}
+.wave::before {
+  border-radius: 16%;
+  background-color: rgba(20, 20, 20, 1);
+  animation: wave 5s linear infinite;
+}
+.wave::after {
+  border-radius: 12%;
+  background-color: rgba(20, 20, 20, 0.5);
+  animation: wave 10s linear infinite;
+}
+
+/* Adjust the button size and text for square shape */
+
+.wave-a {
+  width: 150px;
+  height: 40px;
+  padding-top: 7px;
+  padding-bottom: 4px;
+  padding-left: 30px;
+  position: relative;
+  display: block;
+  text-decoration: none;
+  overflow: hidden;
+
+  border-radius: 26px;
+
+  .hover-span {
+    position: relative;
+    z-index: 1;
+    color: white;
+    font-size: 12px;
+    letter-spacing: 6px;
+  }
+
+  .wave {
+    width: 200px;
+    height: 150px;
+    background-color: #444857;
+    box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5);
+    position: absolute;
+    left: 0;
+    top: -80px;
+    transition: 0.4s;
+
+    &::before,
+    &::after {
+      width: 200%;
+      height: 200%;
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, -75%);
+    }
+
+    &::before {
+      border-radius: 45%;
+      background-color: rgba(20, 20, 20, 1);
+      animation: wave 5s linear infinite;
+    }
+
+    &::after {
+      border-radius: 40%;
+      background-color: rgba(20, 20, 20, 0.5);
+      animation: wave 10s linear infinite;
+    }
+  }
+}
+
+@keyframes wave {
+  0% {
+    transform: translate(-50%, -75%) rotate(0deg);
+  }
+
+  100% {
+    transform: translate(-50%, -75%) rotate(360deg);
+  }
+}
+
+.cssbuttons-io-button {
+  background: black;
+  color: white;
+  font-family: inherit;
+  padding: 0.35em;
+  padding-left: 1.2em;
+  font-size: 17px;
+  font-weight: 500;
+  border-radius: 0.9em;
+  border: none;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  box-shadow: inset 0 0 2.9em -0.7em #60a5fa;
+  overflow: hidden;
+  position: relative;
+  height: 2.8em;
+  padding-right: 3.3em;
+  cursor: pointer;
+}
+
+.cssbuttons-io-button .icon {
+  margin-left: 1em;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.2em;
+  width: 2.2em;
+  border-radius: 0.7em;
+  box-shadow: 0.1em 0.1em 0.6em 0.2em #60a5fa;
+  right: 0.3em;
+  transition: all 0.3s;
+}
+
+
+
+.cssbuttons-io-button .icon svg {
+  width: 1.1em;
+  transition: transform 0.3s;
+  color: white;
+}
+
+.cssbuttons-io-button:hover .icon svg {
+  transform: translateX(0.1em);
+}
+
+.cssbuttons-io-button:active .icon {
+  transform: scale(0.95);
+}
+/* about us marquee */
+.marquee-wrapper {
+  overflow: hidden;
+  width: 50%;
+
+  padding: 3rem 0;
+  box-sizing: border-box;
+}
+
+.marquee-row {
+  display: flex;
+  gap: 1.5rem;
+  /* duplicate logos for smooth looping */
+  width: max-content;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  /* fixed height */
+  height: 100px;
+  align-items: center;
+}
+
+/* Animate left to right */
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Animate right to left */
+@keyframes scroll-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.scroll-left {
+  animation-name: scroll-left;
+  animation-duration: 30s;
+}
+
+.scroll-right {
+  animation-name: scroll-right;
+  animation-duration: 35s;
+}
+
+.marquee-item {
+  flex-shrink: 0;
+  background: white;
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 10px rgb(0 0 0 / 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 140px;
+  height: 80px;
+}
+
+.marquee-item img {
+  max-height: 48px;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+/* scroll animation ========== */
+
+.main-wrapper {
+  margin: 0;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  min-height: 100vh;
+}
+
+.scroll-container {
+  height: auto;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  position: relative;
+  
+  padding-top: 70px;
+}
+
+.scroll-card {
+  width: 100%;
+  flex: none;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
   text-align: center;
+  position: relative;
+  box-sizing: border-box;
+  padding: 1rem 1rem;
+  background-color: white;
+  transition: all 0.3s ease;
+  border-right: 1px solid #e2e8f0;
+
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+
+
+.main-card {
+  color: white;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.card-content {
+  width: 100%;
+}
+
+.card-title {
+  font-family: 'Arial', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+}
+
+.card-title.gradient-title {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.card-description {
+  margin: 0 0 1rem 0;
+  font-size: 1.125rem;
+  line-height: 1.7;
+  font-weight: 400;
+  opacity: 0.9;
+  font-family: 'Arial', sans-serif;
+}
+
+.service-card {
+  display: flex;
+  gap: 1.5rem;
+  padding: 1.4rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  border: 1px solid #e2e8f0;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle hover effects for cards */
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  border-color: rgba(102, 126, 234, 0.2);
+}
+
+/* Subtle shine effect */
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.service-card:hover::before {
+  left: 100%;
+}
+
+
+
+.service-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 12px 0 0.2rem 0;
+  color: #1a202c;
+  font-family: 'Arial', sans-serif;
+  transition: color 0.3s ease;
+}
+
+.service-card:hover .service-title {
+  color: #667eea;
+}
+
+.service-description {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #4a5568;
+  font-family: 'Arial', sans-serif;
+  transition: color 0.3s ease;
+}
+
+.service-card:hover .service-description {
+  color: #2d3748;
+}
+
+.service-image {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  /* No animations for icons */
+}
+
+.main-card .card-description {
+  color: black;
+}
+
+.active-card {
+  transform: scale(1.02);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.active-card .card-title {
+  font-weight: 800;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2rem;
+    margin: 2rem 0 1rem 0;
   }
-  to {
-    transform: rotate(360deg);
+  
+  .card-title {
+    font-size: 2rem;
+  }
+  
+  .card-description {
+    font-size: 1rem;
+  }
+  
+  .scroll-card {
+    padding: 2rem 1.5rem;
+  }
+  
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .service-card {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .service-content {
+    text-align: center;
+  }
+  
+  /* Reduce hover effect on mobile */
+  .service-card:hover {
+    transform: translateY(-3px);
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+/* Hide all ScrollTrigger debug markers */
+.gsap-marker-start,
+.gsap-marker-end,
+.gsap-marker-scroller-start,
+.gsap-marker-scroller-end {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
+/* end of scroll animation */
+@media (max-width: 1278px) {
+  .wave-a {
+    display: none !important;
+  }
+}
+@media (max-width: 1024px) {
+  .marquee-wrapper {
+    overflow: hidden;
+    width: 100%;
+
+    padding: 3rem 0;
+    box-sizing: border-box;
   }
 }
 
-.card {
-  padding: 2em;
+/* Parent wrapper: center everything inside */
+.unique-spinner-wrapper {
+  width: 100%;
+  height: 100vh; /* full viewport height */
+  display: flex;
+  justify-content: center; /* horizontally center */
+  align-items: center;     /* vertically center */
 }
 
-.read-the-docs {
-  color: #888;
+/* Spinner container */
+.unique-spinner-square {
+  display: flex;
+  flex-direction: row;
+  width: 90px;
+  height: 120px;
+}
+
+/* Common styles for all squares */
+.unique-spinner-square > .unique-square {
+  width: 17px;
+  height: 80px;
+  margin: auto auto;
+  border-radius: 4px;
+}
+
+/* Individual square animations */
+.unique-square-1 {
+  animation: unique-square-anim 1200ms cubic-bezier(0.445, 0.05, 0.55, 0.95) 0s infinite;
+}
+
+.unique-square-2 {
+  animation: unique-square-anim 1200ms cubic-bezier(0.445, 0.05, 0.55, 0.95) 200ms infinite;
+}
+
+.unique-square-3 {
+  animation: unique-square-anim 1200ms cubic-bezier(0.445, 0.05, 0.55, 0.95) 400ms infinite;
+}
+
+/* Animation keyframes */
+@keyframes unique-square-anim {
+  0% {
+    height: 80px;
+    background-color: rgb(111, 163, 240);
+  }
+  20% {
+    height: 80px;
+  }
+  40% {
+    height: 120px;
+    background-color: rgb(111, 200, 240);
+  }
+  80% {
+    height: 80px;
+  }
+  100% {
+    height: 80px;
+    background-color: rgb(111, 163, 240);
+  }
 }

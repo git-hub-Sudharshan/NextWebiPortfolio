@@ -1,0 +1,92 @@
+
+/************************************/
+/***      08. Who We Are css      ***/
+/************************************/
+
+.who-we-are{
+	padding: 100px 0;
+}
+
+.who-we-are-accordion{
+	margin-right: 15px;
+}
+
+.who-we-are-accordion .accordion-item{
+    border: 1px solid var(--dark-divider-color);
+	border-radius: 10px;
+	margin-bottom: 40px;
+    padding: 0;
+	transition: all 0.3s ease-in-out;
+	overflow: hidden;
+}
+
+.who-we-are-accordion .accordion-item:last-child{
+	margin-bottom: 0;
+}
+
+.who-we-are-accordion .accordion-header .accordion-button{
+	font-size: 18px;
+	font-weight: 700;
+	line-height: 1.2em;
+	background: var(--dark-divider-color);
+	color: var(--white-color);
+	padding: 20px 50px 20px 20px;
+	transition: all 0.3s ease-in-out;
+}
+
+.who-we-are-accordion .accordion-header .accordion-button img{
+	width: 100%;
+	max-width: 40px;
+	margin-right: 20px;
+}
+
+.who-we-are-accordion .accordion-button:not(.collapsed){
+    background: linear-gradient(90deg, var(--accent-secondary-color) 0%, var(--accent-color) 100%);
+}
+
+.who-we-are-accordion .accordion-item .accordion-button::after,
+.who-we-are-accordion .accordion-item .accordion-button.collapsed::after{
+	content: '\f077';
+    font-family: 'FontAwesome';
+    position: absolute;
+    right: 20px;
+    top: 50%;
+	transform: translateY(-50%);    
+    font-size: 16px;
+    color: var(--white-color);
+    transition: all 0.3s ease-in-out;
+}
+
+.who-we-are-accordion .accordion-item .accordion-button.collapsed::after{
+	transform: translateY(-50%) rotate(180deg);
+}
+
+.who-we-are-accordion .accordion-item .accordion-body{
+	background: linear-gradient(90deg, var(--accent-secondary-color) 0%, var(--accent-color) 100%);
+	padding: 20px;
+	border-top: 1px solid var(--dark-divider-color);
+}
+
+.who-we-are-accordion .accordion-item .accordion-body p{
+    color: var(--white-color);
+	margin: 0;
+}
+
+.who-we-are-counters{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px 70px;
+	border-top: 1px solid var(--dark-divider-color);
+	padding-top: 40px;
+}
+
+.who-we-counter-item h2{
+	font-size: 48px;
+	color: var(--white-color);
+	margin-bottom: 10px;
+}
+
+.who-we-counter-item p{
+	color: var(--white-color);
+	margin-bottom: 0;
+}

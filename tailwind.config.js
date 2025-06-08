@@ -21,6 +21,7 @@ export default {
         secondary: "var(--color-secondary)",
         background: "var(--color-background)",
         text: "var(--color-text)",
+        bodyblack: "var(--color-body)",
       },
       fontFamily: {
         base: ["var(--font-base)"],

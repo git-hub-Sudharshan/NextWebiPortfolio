@@ -2,6 +2,7 @@ import { headings } from "../../styles/gradients";
 import { useEffect } from "react";
 import AOS from "aos";
 
+
 const testimonials = [
   {
     name: "Coriss Ambady",
@@ -82,7 +83,7 @@ const Testimonials = () => {
           ))}
         </div>
       </div>
-      
+ 
     </section>
   );
 };

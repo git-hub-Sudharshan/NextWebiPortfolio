@@ -4,6 +4,7 @@ import Logo from "../assets/images/logos/logo-white.png";
 import { Icon } from "@iconify/react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   useEffect(() => {
@@ -61,7 +62,7 @@ const Footer = () => {
 
       {/* Logo Row */}
       <div className="flex flex-col items-center justify-between gap-6 mx-auto mb-8 max-w-7xl md:flex-row">
-        <img src={Logo} alt="Nextwebi Logo" className="w-40 md:w-48" />
+      <Link to="/">  <img src={Logo} alt="Nextwebi Logo" className="w-40 md:w-48" /></Link>
       </div>
 
       {/* Main Footer Columns */}

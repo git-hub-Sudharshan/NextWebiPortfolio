@@ -3,7 +3,7 @@ import { Icon } from '@iconify/react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { heroGradientTitle } from "../../styles/gradients";
-
+import GoogleReview from "./review";
 const accordionItems = [
   {
     id: 1,
@@ -111,6 +111,8 @@ const WhyChooseUs = () => {
           
         </div>
       </div>
+
+           <GoogleReview/>
     </section>
   );
 };

@@ -3,6 +3,8 @@ import { Suspense, lazy } from "react";
 import ScrollToTop from "./commonComponents/scrollToTop";
 import RefreshLoader from "./commonComponents/refreshLoader";
 import "./App.css";
+import SplashCursor from "./commonComponents/cursor";
+
 
 // Lazy load components
 const MainLayout = lazy(() => import("./layouts/mainLayout"));
@@ -16,6 +18,7 @@ const App = () => {
     // Suspense fallback UI while loading
     <Suspense fallback={<RefreshLoader />}>
       <ScrollToTop />
+      <SplashCursor/>
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Home />} />

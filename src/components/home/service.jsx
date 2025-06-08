@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import "./service.css";
+
 
 import { headings } from "../../styles/gradients";
 const cardData = [

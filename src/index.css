@@ -26,6 +26,7 @@ body {
 }
 html {
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 *,
 *::before,
@@ -47,4 +48,3 @@ p {
 }
 
 /* Add to your index.css or a global stylesheet */
-

@@ -1,6 +1,8 @@
 import { Routes, Route } from "react-router-dom";
 import { Suspense, lazy } from "react";
-import './App.css'
+import ScrollToTop from "./commonComponents/scrollToTop";
+import RefreshLoader from "./commonComponents/refreshLoader";
+import "./App.css";
 
 // Lazy load components
 const MainLayout = lazy(() => import("./layouts/mainLayout"));
@@ -12,17 +14,8 @@ const NotFound = lazy(() => import("./errors/error"));
 const App = () => {
   return (
     // Suspense fallback UI while loading
-    <Suspense fallback={
-<div class="unique-spinner-wrapper">
-
-  <div class="unique-spinner-square">
-    <div class="unique-square-1 unique-square"></div>
-    <div class="unique-square-2 unique-square"></div>
-    <div class="unique-square-3 unique-square"></div>
-  </div>
-</div>
-}>
-        {navigation.state === "loading" && <div className="loading-overlay">Loading...</div>}
+    <Suspense fallback={<RefreshLoader />}>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Home />} />

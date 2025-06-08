@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { Link, useLocation,NavLink } from "react-router-dom";
+import { Link, useLocation, NavLink } from "react-router-dom";
 import gsap from "gsap";
 import LogoBefore from "../assets/images/logos/logo-white.png";
 import LogoAfter from "../assets/images/logos/nextwebi-logo.png";
@@ -37,7 +37,7 @@ const Header = () => {
           scale: 1.08,
           filter: "blur(0px)",
           duration: 0.5,
-  ease: "power2.out",
+          ease: "power2.out",
           overflow: "hidden",
           onStart: () => {
             children.forEach((child) => {
@@ -65,39 +65,34 @@ const Header = () => {
   }, [isHomePage]);
 
   // Drawer animation
-  useEffect(() => {
-    if (open) {
-      gsap.fromTo(
-        drawerRef.current,
-        {
-          x: "100%",
-          rotate: 30,
-          scale: 0.8,
-          opacity: 0.5,
-          pointerEvents: "none",
-        },
-        {
-          x: 0,
-          rotate: 0,
-          scale: 1,
-          opacity: 1,
-          duration: 0.7,
-          ease: "power4.out",
-          pointerEvents: "auto",
-        }
-      );
-    } else {
-      gsap.to(drawerRef.current, {
-        x: "130%",
-        rotate: 20,
-        scale: 0.8,
-        opacity: 0.5,
-        duration: 0.6,
-        ease: "power4.in",
-        pointerEvents: "none",
-      });
-    }
-  }, [open]);
+useEffect(() => {
+  if (!drawerRef.current) return;
+
+  const drawer = drawerRef.current;
+
+  if (open) {
+    gsap.to(drawer, {
+      x: 0,
+      rotate: 0,
+      scale: 1,
+      autoAlpha: 1,
+      duration: 0.5,
+      ease: "power3.out",
+      pointerEvents: "auto",
+    });
+  } else {
+    gsap.to(drawer, {
+      x: "100%",
+      rotate: 10,
+      scale: 0.9,
+      autoAlpha: 0,
+      duration: 0.4,
+      ease: "power3.in",
+      pointerEvents: "none",
+    });
+  }
+}, [open]);
+
 
   // Scroll detection (still active for all pages)
   useEffect(() => {
@@ -282,45 +277,62 @@ const Header = () => {
               pointerEvents: "none",
             }}
           >
-            <div className="flex items-center justify-between px-6 pt-6">
-              <img src={LogoBefore} alt="Logo" className="w-auto h-8" />
-              <button
-                onClick={() => setOpen(false)}
-                aria-label="Close Menu"
-                className="flex items-center justify-center w-8 h-8 text-xl text-black transition bg-white rounded-full hover:bg-blue-400 hover:text-white"
-              >
-                ×
-              </button>
-            </div>
+    <div className="flex items-center justify-between px-4 pt-4">
+  <img src={LogoBefore} alt="Logo" className="w-auto h-6" /> {/* Smaller logo */}
+  <button
+    onClick={() => setOpen(false)}
+    aria-label="Close Menu"
+    className="flex items-center justify-center text-lg text-black transition bg-white rounded-full w-7 h-7 hover:bg-blue-400 hover:text-white"
+  >
+    ×
+  </button>
+</div>
 
-         <nav className="flex flex-col flex-grow px-6 pt-10 space-y-6 font-medium text-white text-md">
-  {[
-    { to: "/", label: "Home", icon: "mdi:home" },
-    { to: "/bloglist", label: "Blog", icon: "mdi:domain" },
-    { to: "/services", label: "Services", icon: "mdi:tools" },
-    { to: "/hire-developers", label: "Hire Developers", icon: "mdi:account-group" },
-    { to: "/solutions", label: "Solutions", icon: "mdi:lightbulb-on" },
-    { to: "/technologies", label: "Technologies", icon: "mdi:code-tags" },
-    { to: "/ourwork", label: "Our Work", icon: "mdi:briefcase-check" },
-  ].map(({ to, label, icon }) => (
-    <NavLink
-      key={to}
-      to={to}
-      onClick={() => setOpen(false)}
-      className={({ isActive }) =>
-        `flex items-center justify-between w-full pb-3 text-left border-b border-gray-600 hover:text-blue-300 ${
-          isActive ? "text-blue-400 font-bold" : ""
-        }`
-      }
-    >
-      <div className="flex items-center space-x-3">
-        <Icon icon={icon} className="w-6 h-6" />
-        <span>{label}</span>
-      </div>
-      <div className="h-6 border-r border-gray-400"></div>
-    </NavLink>
-  ))}
-</nav>
+
+            <nav className="flex flex-col flex-grow px-6 pt-10 space-y-6 font-medium text-white text-md">
+              {[
+                { to: "/", label: "Home", icon: "mdi:home" },
+                { to: "/bloglist", label: "Blog", icon: "mdi:domain" },
+                { to: "/services", label: "Services", icon: "mdi:tools" },
+                {
+                  to: "/hire-developers",
+                  label: "Hire Developers",
+                  icon: "mdi:account-group",
+                },
+                {
+                  to: "/solutions",
+                  label: "Solutions",
+                  icon: "mdi:lightbulb-on",
+                },
+                {
+                  to: "/technologies",
+                  label: "Technologies",
+                  icon: "mdi:code-tags",
+                },
+                {
+                  to: "/ourwork",
+                  label: "Our Work",
+                  icon: "mdi:briefcase-check",
+                },
+              ].map(({ to, label, icon }) => (
+                <NavLink
+                  key={to}
+                  to={to}
+                  onClick={() => setOpen(false)}
+                  className={({ isActive }) =>
+                    `flex items-center justify-between w-full pb-3 text-left border-b border-gray-600 hover:text-blue-300 ${
+                      isActive ? "text-blue-400 font-bold" : ""
+                    }`
+                  }
+                >
+                  <div className="flex items-center space-x-3">
+                    <Icon icon={icon} className="w-6 h-6" />
+                    <span>{label}</span>
+                  </div>
+                  <div className="h-6 border-r border-gray-400"></div>
+                </NavLink>
+              ))}
+            </nav>
 
             <div className="flex justify-center pt-4 pb-8 space-x-6 text-white">
               <a

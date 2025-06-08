@@ -29,12 +29,14 @@ const AboutCompany = () => {
         </div>
 
         <h2 className={`text-3xl md:text-4xl font-bold ${headings}`}>
+          
           Trusted by 600+ Startups and
           <br />
           Enterprises across 20+ Nations
         </h2>
         
         <p className="text-base leading-relaxed text-gray-900">
+          
           Nextwebi delivers high-end IT solutions to businesses and offers the
           best class web solutions for your business that helps you to succeed
           remarkably in your ventures. Through our agile digital methodology and

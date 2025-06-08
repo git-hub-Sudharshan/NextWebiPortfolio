@@ -26,6 +26,7 @@ const Hero = () => {
           data-aos="fade-up"
           className={`text-[3rem] sm:text-[4rem] md:text-[4rem] leading-[1.1] mb-6 font-bold -tracking-tight ${heroGradientTitle}`}
         > 
+        
          Custom Software and 
           <br />
          ERP Solutions Company

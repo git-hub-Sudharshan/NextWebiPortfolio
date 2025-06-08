@@ -508,6 +508,7 @@ const HorizontalScrollCards = () => {
     <div className="container mx-auto mt-14 px-lg">
    <div className="flex flex-col items-center px-4 text-center md:px-8">
   <h2 className={`text-3xl md:text-4xl font-bold mb-4 ${headings}`}>
+    
     What Can We Do For You
   </h2>
   <p className="max-w-4xl text-base leading-relaxed text-gray-700">
